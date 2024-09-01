@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Align</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div style = "display: flex; justify-content: center;">
+        <div style = "width:1200px; background-color: red; height: 500px; display: flex; justify-content: center;flex-direction: column;align-items: center;" >
+            <h1>hi there</h1>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--
+The CSS properties display: flex; and justify-content: center; are used together to center content within a container. Here's a breakdown of what each property does:
+
+display: flex;: This property turns the container into a flexbox, enabling a more advanced and flexible layout model. Flexbox is great for distributing space along a single axis (either horizontally or vertically) and for aligning items within a container.
+
+justify-content: center;: This property aligns the flex items (the direct children of the container) along the main axis (typically horizontal) and centers them within the container. When combined with display: flex;, it centers the content horizontally.
+
+Example Usage
+html
+Copy code
+<div style="display: flex; justify-content: center; height: 100px; background-color: lightgray;">
+    <p>This content is centered horizontally.</p>
+</div>
+In this example, the <p> element will be centered horizontally within the <div> container. The container itself is styled with a height and a background color to make the centering effect more visible.
+
+Additional Flexbox Properties
+align-items: center;: Centers the items vertically within the container.
+flex-direction: row;: Arranges items in a row (default) or column (flex-direction: column;).
+flex-wrap: wrap;: Allows items to wrap onto multiple lines if there's not enough space on one line.
+
+-->

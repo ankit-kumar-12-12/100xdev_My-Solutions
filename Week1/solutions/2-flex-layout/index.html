@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Layout</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div style = "display: flex;">
+        <div style = "flex-grow: 1; background-color: aqua;" >
+            <h1>box1</h1>
+        </div>
+        <div style = "flex-grow: 2; background-color:blueviolet;"" >
+            <h1> box2</h1>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--
+In CSS, flex-grow is a property used in flexbox layouts to control how much space a flex item should take up in relation to other flex items along the main axis. The value assigned to flex-grow is a unitless number that acts as a proportion of available space within the flex container.
+
+Syntax
+css
+Copy code
+.flex-item {
+  flex-grow: 1; /* or any other number */
+}
+How It Works
+flex-grow: 0; (default): The item will not grow and will only take up the space it requires.
+flex-grow: 1;: The item will take up any remaining space in the container, sharing it equally with other items that also have a flex-grow value greater than 0.
+flex-grow: 2;: The item will grow twice as much as other items with a flex-grow value of 1.
+Example
+If you have three flex items in a container:
+
+html
+Copy code
+<div class="container">
+  <div class="item" style="flex-grow: 1;">Item 1</div>
+  <div class="item" style="flex-grow: 2;">Item 2</div>
+  <div class="item" style="flex-grow: 1;">Item 3</div>
+</div>
+Item 1 and Item 3 will take up one part each of the remaining space.
+Item 2 will take up two parts, effectively growing twice as much as Item 1 and Item 3.
+This property is very useful for creating responsive designs where elements need to adjust based on the container's size.
+-->

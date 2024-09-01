@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div style = "display: grid; grid-template-columns: 33.33% 66.67%;">
+        <div style = " background-color: aqua;" >
+            <h1>grid1</h1>
+        </div>
+        <div style = " background-color:blueviolet;"" >
+            <h1> grid2</h1>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!--
+CSS Grid is a powerful layout system in CSS that allows you to create complex and responsive web designs by defining a grid-based layout for your content. Unlike other layout methods like Flexbox, which are one-dimensional (either row-based or column-based), CSS Grid is two-dimensional, meaning it can control both rows and columns simultaneously.
+
+Basic Concepts of CSS Grid
+Grid Container:
+
+The element that you apply display: grid; or display: inline-grid; to. This becomes the grid container, and its children become grid items.
+Example:
+css
+Copy code
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 200px;
+  grid-template-rows: 100px 200px;
+}
+Grid Items:
+
+The direct children of the grid container. These items are placed into the defined grid.
+Example:
+html
+Copy code
+<div class="grid-container">
+  <div class="item1">Item 1</div>
+  <div class="item2">Item 2</div>
+  <div class="item3">Item 3</div>
+</div>
+Grid Tracks:
+
+Grid Columns: Vertical sections of the grid.
+Grid Rows: Horizontal sections of the grid.
+Grid Gaps: The space between rows and columns (grid-gap or the newer gap property).
+Grid Lines:
+
+The lines that divide the grid into columns and rows. These lines can be used to position grid items.
+Grid Areas:
+
+Named areas within the grid that you can assign grid items to.
+Defining the Grid
+Grid Template Columns & Rows:
+
+Defines the size and number of columns and rows in the grid.
+Example:
+css
+Copy code
+.grid-container {
+  grid-template-columns: 100px 200px 1fr;
+  grid-template-rows: 100px auto;
+}
+This creates a grid with three columns (100px, 200px, and the remaining space) and two rows (100px and auto-sized based on content).
+Grid Gaps:
+
+Defines the spacing between grid items.
+Example:
+css
+Copy code
+.grid-container {
+  gap: 10px 20px; /* 10px between rows, 20px between columns */
+}
+Placing Grid Items:
+
+You can place items on the grid explicitly using line numbers, named lines, or grid areas.
+
+Example using line numbers:
+
+css
+Copy code
+.item1 {
+  grid-column: 1 / 3; /* Starts at line 1 and spans to line 3 */
+  grid-row: 1 / 2;    /* Occupies the first row */
+}
+Example using grid areas:
+
+css
+Copy code
+.grid-container {
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+Implicit Grid:
+
+If you place a grid item outside the defined grid structure, CSS Grid automatically generates additional tracks (rows or columns) to accommodate it.
+Advanced Features
+Fractional Units (fr):
+
+The fr unit is a fraction of the available space in the grid container.
+Example:
+css
+Copy code
+grid-template-columns: 1fr 2fr;
+This divides the container into two columns, where the second column is twice the width of the first.
+Auto-Fit and Auto-Fill:
+
+These are used in combination with repeat() to create responsive grids.
+Example:
+css
+Copy code
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+This automatically fits as many columns as possible with a minimum width of 100px.
+Grid Auto Flow:
+
+Controls the order in which grid items are placed.
+Example:
+css
+Copy code
+grid-auto-flow: dense; /* Tries to fill gaps in the grid */
+Example: Basic Grid Layout
+html
+Copy code
+<div class="grid-container">
+  <div class="header">Header</div>
+  <div class="sidebar">Sidebar</div>
+  <div class="content">Content</div>
+  <div class="footer">Footer</div>
+</div>
+
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  gap: 10px;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.content {
+  grid-area: content;
+}
+
+.footer {
+  grid-area: footer;
+}
+</style>
+Responsive Grid
+One of the strengths of CSS Grid is its ability to create responsive layouts with minimal effort.
+
+Conclusion
+CSS Grid provides a robust framework for building complex, responsive web layouts with minimal code. Its two-dimensional approach makes it more versatile than other layout methods, and its features like grid areas, fractional units, and auto-placement allow for highly customizable designs.
+-->
