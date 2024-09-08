@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TO DO! with delete button</h1>
+    <div id="todo">
+        <input id="inp" type="text"></input>
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
+    
+
+</body>
+    <script>
+        
+        let currIndex = 1
+        
+        function addTodo(){
+            // const inputEle = document.getElementById("inp")
+            // const textNode = document.createElement("div")
+            //                     //<div id=1> 1. to do </div> 
+            //                     //<button onclick=deleteTodo(1)>Delete</button>
+
+            // textNode.innerHTML = "<div id=" + currIndex + ">" + currIndex+ "." + inputEle.value  + 
+            //                      "<button onclick=deleteTodo(" + currIndex + ")>Delete</button> </div>" 
+            // currIndex +=1
+            // const parentNode = document.getElementById("todo")
+            // parentNode.appendChild(textNode)
+            // inputEle.value = ""
+
+            //***Creating Same but with setAttribute
+
+            const inputEle = document.getElementById("inp")
+            const todoText = inputEle.value.trim()
+
+            if(todoText == ""){
+
+                alert("Please enter some text")
+                return 
+            }
+
+            //Creat new todo div with id 
+            const newTodo = document.createElement("div")
+            newTodo.setAttribute("id",currIndex)
+
+            //Create new heading which goes inside our newTodo
+            const newHeading = document.createElement("h3")
+            newHeading.textContent = currIndex +"."+ todoText
+
+            //Create new delete button which goes into newTod 
+            const newButton = document.createElement("button")
+            newButton.textContent = "Delete"
+            newButton.setAttribute("onclick","deleteTodo("+currIndex+")")
+
+            //Appending to div
+            newTodo.appendChild(newHeading)
+            newTodo.appendChild(newButton)
+
+            //Appending newTodo div to parent todo div
+            const parentDiv = document.getElementById("todo")
+            parentDiv.appendChild(newTodo)
+
+            //incrementing our index
+            currIndex +=1
+
+            //setting input to ""
+            inputEle.value = ""
+
+        }
+
+              
+        function deleteTodo(index){
+
+        const ele = document.getElementById(index)
+        ele.parentNode.removeChild(ele)
+        }
+        
+    </script>
+</html>

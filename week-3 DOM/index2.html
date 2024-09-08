@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TO DO! Delete manually Only 3 Task</h1>
+    <div id="todo">
+        <div id="todo-1">
+            <h3>1.Take Class</h3>
+            <button onclick="deleteTodo(1)">Delete</button>
+        </div>
+        <div id="todo-2">
+            <h3>2.Pls Take Class</h3>
+            <button onclick="deleteTodo(2)">Delete</button>
+        </div>
+        <div id="todo-3">
+            <h3>3.You Can take Class</h3>
+            <button onclick="deleteTodo(3)">Delete</button>
+        </div>
+    </div>
+    
+
+</body>
+    <script>
+
+        function deleteTodo(index){
+
+            const ele = document.getElementById("todo-"+index)
+
+            console.log(ele)
+            // console.log(ele.parentNode)
+            // console.log(ele.parentElement)
+
+            // const parentEle = ele.parentNode
+            // parentEle.removeChild(ele)
+
+            ele.parentNode.removeChild(ele)
+        }
+
+    </script>
+</html>

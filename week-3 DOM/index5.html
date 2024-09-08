@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TO DO! with render approach</h1>
+    <div id="todo">
+        <input id="inp" type="text"></input>
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
+    <div id="todos"> </div>
+    
+
+</body>
+    <script>
+        
+        let todo=[]
+        
+        function addTodo(){
+            //console.log(document.getElementById("inp").value)
+            todo.push({
+                content: document.getElementById("inp").value
+            })
+            render()
+        }
+
+        function deleteTodo(todo,i){
+            console.log("delete calling:",i)
+            const parent = document.getElementById("todos")
+            const ele = document.getElementById(i)
+            console.log(parent)
+            console.log(ele)
+            parent.removeChild(ele)
+            todo.splice(i,1)
+            console.log(todo)
+            render()
+        }
+        function render(){
+            document.querySelector("#todos").innerHTML=""
+            for(let i=0;i<todo.length;i++){
+                const ele = createTodoComponent(todo[i],i+1)
+                document.querySelector("#todos").appendChild(ele)
+            }
+            document.getElementById("inp").value = ""
+        }
+
+        function createTodoComponent(todo,i){
+            const div = document.createElement("div")
+            const h3 = document.createElement("h3")
+            const button = document.createElement("button")
+            button.innerHTML = "Delete"
+            div.setAttribute("id",i-1)
+            button.setAttribute("onclick","deleteTodo(todo,"+(i-1)+")")
+            h3.innerHTML = i+"."+todo.content
+            div.append(h3)
+            div.append(button)
+            return div
+        }
+    </script>
+</html>
