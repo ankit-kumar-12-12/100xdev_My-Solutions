@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .footer{
+            position: fixed;
+            bottom: 0;
+            /* left:50% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: aqua;
+            width: 100%;
+
+
+        }
+        /* .body-bg{
+            background-color: blueviolet;
+        } */
+    </style>
+    
+    
+</head>
+ <body id="body-bg" ><!--class="body-bg" -->
+
+
+    <div class="footer">
+
+        <button onclick="bgchange(this)" id="btn" value="red" style="background-color: red;">
+            Red
+        </button >
+        <button onclick="bgchange(this)" id="btn" value="blue" style="background-color: blue;">
+            Blue
+        </button>
+        <button onclick="bgchange(this)" id="btn" value="green" style="background-color: green;">
+            Green
+        </button>
+        <button onclick="bgchange(this)" id="btn" value="yellow" style="background-color: yellow;">
+            Yellow
+        </button>
+        <!-- <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>
+        <button>
+            Yellow
+        </button>    -->
+
+    </div>
+</body>
+<script>
+    function bgchange(ele){
+        // const ele = document.getElementById('red').value
+
+        // console.log(ele)
+
+        // const colortext= document.createElement("div")
+        // colortext.innerHTML = ele
+
+        // ele.parentNode.appendChild(colortext)
+
+        // const ele = document.getElementById('body-bg')
+
+        // ele.innerHTML="hey there"
+
+        // //ele.setAttribute('background-color','red')
+
+        console.log(ele.getAttribute('value'))
+
+
+        //document.body.style.backgroundColor = document.getElementById(ele).value
+
+        document.body.style.backgroundColor = ele.getAttribute('value')
+        
+        // When fucntion call we can get all the data with this key word and here we get the value attribute and based on that we change the backgroud color 
+
+
+    }
+</script>
+
+
+</html>

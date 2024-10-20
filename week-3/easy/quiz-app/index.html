@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #quizDiv {
+            margin-bottom: 20px;
+        }
+        #response {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quiz App</h1>
+<div id="quizDiv"></div>
+<button id="submitButton">Submit</button>
+<div id="response"></div>
+
+<script type="module">
+    import { quizData } from './data.js'; // Import your quiz data here
+
+    let count = 0; // Start at the first question
+
+    function displayQuestion() {
+        const quizDiv = document.getElementById("quizDiv");
+        
+        // Render the question and options
+        quizDiv.innerHTML = `
+            <h2>${quizData[count].question}</h2>
+            <input type="radio" name="ans" value="a">${quizData[count].a}<br/>
+            <input type="radio" name="ans" value="b">${quizData[count].b}<br/>
+            <input type="radio" name="ans" value="c">${quizData[count].c}<br/>
+            <input type="radio" name="ans" value="d">${quizData[count].d}<br/>
+        `;
+    }
+
+    function checkAnswer() {
+        const options = document.getElementsByName("ans");
+        let selectedOption = null;
+
+        // Loop through options to find the selected one
+        for (const option of options) {
+            if (option.checked) {
+                selectedOption = option.value; // Get the value of the selected option
+                break;
+            }
+        }
+
+        // Display the selected option or an error message
+        const responseDiv = document.getElementById("response");
+        if (selectedOption) {
+            responseDiv.innerHTML = `You selected: ${selectedOption}`;
+            // Check the answer if needed
+            if (selectedOption === quizData[count].correct) {
+                responseDiv.innerHTML += " - Correct!";
+            } else {
+                responseDiv.innerHTML += " - Incorrect!";
+            }
+            // Move to the next question
+            count++;
+            if (count < quizData.length) {
+                displayQuestion();
+            } else {
+                responseDiv.innerHTML += "<br/>Quiz completed!";
+                quizDiv.innerHTML = ""; // Clear quiz div
+            }
+        } else {
+            responseDiv.innerHTML = "Please select an answer.";
+        }
+    }
+
+    // Initial question display
+    displayQuestion();
+
+    // Event listener for submit button
+    document.getElementById("submitButton").addEventListener("click", checkAnswer);
+</script>
+
+</body>
+</html>

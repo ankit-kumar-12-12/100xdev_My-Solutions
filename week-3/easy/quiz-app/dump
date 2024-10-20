@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Quiz App</h1>
+        <div id="question">
+            Which language runs in a web browser?
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="option" value="option1">
+                Option 1
+            </label><br>
+        
+            <label>
+                <input type="radio" name="option" value="option2">
+                Option 2
+            </label><br>
+        
+            <label>
+                <input type="radio" name="option" value="option3">
+                Option 3
+            </label><br>
+        </div>
+        <button id="changeButton">change</button><br/>
+        <button id="next">next</button>
+    </div>
+
+
+ <h1>Quiz App</h1>
+<div id="quiz"></div> 
+</body>
+</html>
+
+<script type="module" >
+    
+    import { quizData } from './data.js';
+
+    // Display the first question in the #quiz div
+    const quizDiv = document.getElementById('quiz');
+    document.getElementById("next").addEventListener("click", next);
+    let count=0
+    function next(){
+        
+        // console.log("ctr is "+ count)
+
+        if(count<quizData.length){
+        quizDiv.innerHTML = `<h2>${quizData[count].question}</h2>
+                             <input type="radio" name="ans" value="a">${quizData[count].a}<br/>
+                             <input type="radio" name="ans" value="b">${quizData[count].b}<br/>
+                             <input type="radio" name="ans" value="c">${quizData[count].c}<br/>
+                             <input type="radio" name="ans" value="d">${quizData[count].d}<br/>
+                            `;
+        
+        //if(document.querySelector('input[name="ans"]:checked')?.value){
+            console.log(count +" "+ document.querySelector('input[name="ans"]:checked')?.value)  
+        //}        
+                          
+        }
+        else{
+            count=-1
+        }
+        
+        
+        //const answer = document.getElementsByName("ans").value;                    
+        //console.log(count +" "+ answer )  
+        count=(count%quizData.length) + 1 
+        // console.log("----------")
+        // console.log("ctr is "+ count)
+        // console.log("c")
+    }
+
+    next()
+    
+    document.getElementById("changeButton").addEventListener("click", change);
+
+
+    let ctr=0
+    function change(){
+    document.getElementById("question").innerHTML="ok"
+
+    ctr=(ctr%4) + 1
+
+    console.log("ctr is "+ ctr)
+    }
+
+
+</script>
+
+

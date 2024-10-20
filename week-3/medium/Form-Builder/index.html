@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-builder">
+            <h2>Form Builder</h2>
+
+            <label for="fieldType">Select Field Type</label>
+            <select id="fieldType">
+                <option value="text">Text Input</option>
+                <option value="textarea">Text Area</option>
+                <option value="select">Select</option>
+            </select>
+
+            <label for="fieldLabel">Field Label</label>
+            <input type="text" id="fieldLabel" placeholder="Enter field label">
+
+            <button id="addFieldButton">Add Field</button>
+        </div>
+
+        <div class="form-preview">
+            <h2>Form Preview</h2>
+            <form id="previewForm">
+                <!-- Dynamically added fields will go here -->
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

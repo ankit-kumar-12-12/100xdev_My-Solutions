@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pokemon-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Pokémon Card Display</h1>
+        <label for="numOfCards">Number of Pokémon:</label>
+        <input type="number" id="numOfCards" min="1" max="151">
+        
+        <label for="category">Select Pokémon Category:</label>
+        <select id="category">
+          <option value="1">Grass</option>
+          <option value="2">Fire</option>
+          <option value="3">Water</option>
+          <!-- Add more categories here -->
+        </select>
+        
+        <button id="fetchPokemons">Get Pokémon Cards</button>
+        
+        <div id="pokemonCardsContainer"></div>
+      </div>
+</body>
+<script>
+    document.getElementById('fetchPokemons').addEventListener('click', async function() {
+    const numOfCards = document.getElementById('numOfCards').value;
+    const category = document.getElementById('category').value;
+    
+    const pokemonCardsContainer = document.getElementById('pokemonCardsContainer');
+    pokemonCardsContainer.innerHTML = ''; // Clear previous results
+    
+    if (numOfCards > 0) {
+        for (let i = 1; i <= numOfCards; i++) {
+            // Use the PokeAPI to fetch Pokémon data by ID (you can randomize or sequentially pick IDs)
+            let pokemonId = i;  // You can replace this with logic to pick based on category or randomization
+            let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+            let data = await response.json();
+            
+            // Create card element
+            let card = document.createElement('div');
+            card.className = 'pokemon-card';
+            
+            // Add content to card
+            card.innerHTML = `
+                <h2>${data.name}</h2>
+                <img src="${data.sprites.front_default}" alt="${data.name}">
+                <p>Type: ${data.types.map(t => t.type.name).join(', ')}</p>
+                <p>Abilities: ${data.abilities.map(a => a.ability.name).join(', ')}</p>
+            `;
+            
+            // Append card to the container
+            pokemonCardsContainer.appendChild(card);
+        }
+    }
+});
+</script>
+</html>
