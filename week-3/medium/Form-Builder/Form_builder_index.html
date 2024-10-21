@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container > div {
+            background-color: aqua;
+            width: 720px;
+            height: 100vh;
+            padding: 10px;
+            border: 5px solid gray;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Form Builder</h1>
+            
+            <h3>Select Field Type</h3>
+                <select name="field" id="field">
+                    <option value="text">text</option>
+                    <option value="button">button</option>
+                </select>
+            <h3>Enter Label name</h3>  
+            <input type="text" id="lable" > <br/><br/><br/><br/>
+
+            <center>
+            <button onclick="addForm()">Add!</button>
+            </center>
+            
+        </div>
+
+
+        <div>
+            <h1>Preview</h1>
+            <div id="preview">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function addForm(){
+        const ele=document.getElementById("preview")
+        const childEle = document.createElement("div")
+        // childEle.innerHTML=document.getElementById("field").value //"added in new div"
+        //ele.appendChild(childEle)
+
+        const fieldType=document.getElementById("field").value
+
+        switch(fieldType){
+            case "text":
+                //childEle.innerHTML=document.getElementById("field").value 
+                childEle.innerHTML= document.getElementById("lable").value + '<input type="demo" id="demo">'
+                
+
+                break;
+            case "button":
+                childEle.innerHTML=document.getElementById("lable").value + '<button >Add!</button>'
+
+                break;
+        }
+
+        ele.appendChild(childEle)
+    }
+</script>
